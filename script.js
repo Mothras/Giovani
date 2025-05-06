@@ -132,6 +132,7 @@ function typeWriter() {
 
 // Saat tombol "Mulai" ditekan
 mulaiButton.addEventListener("click", function() {
+    console.log('Tombol Mulai Diklik'); // Tambahkan log
     beranda.classList.add("hidden"); // Sembunyikan halaman beranda
     halamanUtama.classList.remove("hidden"); // Tampilkan halaman utama
     setTimeout(() => {
@@ -142,10 +143,14 @@ mulaiButton.addEventListener("click", function() {
         typeWriter(); // Mulai efek mengetik JavaScript
     }, 50);
     startFlowerRain(); // Mulai hujan bunga saat halaman utama muncul
+    music.play().catch(error => {
+        console.error('Autoplay dicegah:', error);
+    });
 });
 
 // Saat tombol "Yes Babe" ditekan
 yesButton.addEventListener("click", function() {
+    console.log('Tombol Yes Diklik'); // Tambahkan log
     const today = new Date();
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
@@ -162,6 +167,7 @@ yesButton.addEventListener("click", function() {
 
 // Saat tombol "No I Cant" ditekan (hanya berpindah)
 noButton.addEventListener("click", function() {
+    console.log('Tombol No Diklik'); // Tambahkan log
     let x = Math.random() * (window.innerWidth - this.offsetWidth);
     let y = Math.random() * (window.innerHeight - this.offsetHeight);
 
@@ -176,5 +182,20 @@ document.addEventListener('DOMContentLoaded', function() {
     flowerContainer = document.createElement('div');
     flowerContainer.id = 'flowerContainer';
     document.body.appendChild(flowerContainer);
-    music.play(); // Putar musik saat halaman selesai dimuat
+    music.play().catch(error => {
+        console.error('Autoplay dicegah saat DOMContentLoaded:', error);
+    });
+
+    // Periksa apakah tombol Yes dan No ditemukan
+    if (!yesButton) {
+        console.error('Elemen dengan ID "yesButton" tidak ditemukan!');
+    } else {
+        console.log('Elemen dengan ID "yesButton" ditemukan.');
+    }
+
+    if (!noButton) {
+        console.error('Elemen dengan ID "noButton" tidak ditemukan!');
+    } else {
+        console.log('Elemen dengan ID "noButton" ditemukan.');
+    }
 });
