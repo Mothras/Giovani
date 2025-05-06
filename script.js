@@ -142,13 +142,39 @@ mulaiButton.addEventListener("click", function() {
         typeWriter(); // Mulai efek mengetik JavaScript
     }, 50);
     startFlowerRain(); // Mulai hujan bunga saat halaman utama muncul
-    music.play(); // Pindahkan pemutaran musik ke sini
 });
 
-// Buat kontainer bunga di awal setelah DOM dimuat
+// Saat tombol "Yes Babe" ditekan
+yesButton.addEventListener("click", function() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+    const day = String(today.getDate()).padStart(2, '0');
+    const formattedDate = `${month}/${day}/${year}`;
+
+    showPopup(`kalau begitu, mulai hari ini,\n${formattedDate},\nkamu jadi pacarku ya. ❤️`);
+    clearInterval(flowerInterval); // Hentikan interval reguler
+    clearInterval(typingInterval); // Hentikan efek mengetik
+    flowerInterval = setInterval(createFlower, 100); // Percepat hujan bunga!
+    fireConfetti(); // Tembakkan confetti!
+    // Tambahkan efek "perayaan" lain di sini jika mau
+});
+
+// Saat tombol "No I Cant" ditekan (hanya berpindah)
+noButton.addEventListener("click", function() {
+    let x = Math.random() * (window.innerWidth - this.offsetWidth);
+    let y = Math.random() * (window.innerHeight - this.offsetHeight);
+
+    this.style.position = "absolute"; // Pastikan tombol bisa bergerak
+    this.style.left = x + "px";
+    this.style.top = y + "px";
+    clearInterval(typingInterval); // Hentikan efek mengetik
+});
+
+// Buat kontainer bunga di awal setelah DOM dimuat DAN putar musik
 document.addEventListener('DOMContentLoaded', function() {
     flowerContainer = document.createElement('div');
     flowerContainer.id = 'flowerContainer';
     document.body.appendChild(flowerContainer);
-    // music.play(); // Hapus pemutaran di sini
+    music.play(); // Putar musik saat halaman selesai dimuat
 });
