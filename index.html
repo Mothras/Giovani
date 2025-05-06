@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Girl</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="backgroundMusic" loop>
+        <source src="Semanis.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="beranda">
+        <h1>Hai Cantikk! 😊</h1>
+        <button id="mulaiButton">Let start </button>
+    </div>
+
+    <div id="halamanUtama" class="hidden">
+        <h2 id="typingText"></h2>
+        <div class="button-container">
+            <button id="yesButton">Yes </button>
+            <button id="noButton">No </button>
+        </div>
+    </div>
+
+    <div id="popupModal" class="modal hidden">
+        <div class="modal-content">
+            <p id="popupText"></p>
+            <button id="closePopup">OK</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
