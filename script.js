@@ -123,7 +123,7 @@ function typeWriter() {
     if (charIndex < textToType.length) {
         typingTextElement.textContent += textToType.charAt(charIndex);
         charIndex++;
-        typingInterval = setTimeout(typeWriter, 25); // Atur kecepatan mengetik di sini (ms) - nilai lebih kecil untuk lebih smooth
+        typingInterval = setTimeout(typeWriter, 15); // Atur kecepatan mengetik di sini (ms) - nilai lebih kecil untuk lebih smooth
     } else {
         typingFinished = true; // Tandai bahwa efek mengetik sudah selesai
         // Tambahkan animasi atau efek lain setelah mengetik selesai di sini jika mau
@@ -155,7 +155,7 @@ yesButton.addEventListener("click", function() {
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
     const day = String(today.getDate()).padStart(2, '0');
-    const formattedDate = `${month}/${day}/${year}`;
+    const formattedDate = `${day}/${month}/${year}`;
 
     showPopup(`kalau begitu, mulai hari ini,\n${formattedDate},\nkamu jadi pacarku ya. ❤️`);
     clearInterval(flowerInterval); // Hentikan interval reguler
